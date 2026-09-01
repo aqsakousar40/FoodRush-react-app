@@ -1,0 +1,289 @@
+/* ===========================================================
+   FoodRush — Design System
+   Display: Fraunces (warm editorial serif)
+   Body/UI: Plus Jakarta Sans (clean geometric sans)
+=========================================================== */
+
+:root {
+  /* Light theme */
+  --bg: #FFF8F0;
+  --bg-alt: #FDF1E3;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255, 255, 255, 0.6);
+  --text: #241B14;
+  --text-soft: #6B5B4C;
+  --text-faint: #9A8B7C;
+  --border: rgba(36, 27, 20, 0.09);
+  --border-strong: rgba(36, 27, 20, 0.16);
+
+  --coral: #FF5A36;
+  --coral-deep: #E23F1D;
+  --coral-soft: #FFE4D9;
+  --gold: #F2A429;
+  --green: #2F9E5B;
+  --green-soft: #E1F5E8;
+
+  --shadow-sm: 0 2px 8px rgba(36, 27, 20, 0.06);
+  --shadow-md: 0 8px 24px rgba(36, 27, 20, 0.10);
+  --shadow-lg: 0 20px 50px rgba(36, 27, 20, 0.14);
+  --shadow-coral: 0 12px 30px rgba(255, 90, 54, 0.28);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-full: 999px;
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-theme: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+
+[data-theme='dark'] {
+  --bg: #16110C;
+  --bg-alt: #1E1712;
+  --surface: #221A14;
+  --surface-glass: rgba(34, 26, 20, 0.6);
+  --text: #F6EEE3;
+  --text-soft: #C4B4A3;
+  --text-faint: #8C7C6C;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --coral-soft: #3A2318;
+  --green-soft: #163523;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --shadow-coral: 0 12px 30px rgba(255, 90, 54, 0.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: var(--transition-theme);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+}
+
+ul, ol { list-style: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+::selection {
+  background: var(--coral);
+  color: white;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2.5px solid var(--coral);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Layout utilities ===== */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral);
+}
+
+.section {
+  padding: 96px 0;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .container { padding: 0 18px; }
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 15px 28px;
+  border-radius: var(--radius-full);
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--coral);
+  color: #fff;
+  box-shadow: var(--shadow-coral);
+}
+.btn-primary:hover {
+  background: var(--coral-deep);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border-strong);
+}
+.btn-outline:hover {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
+.btn-dark {
+  background: var(--text);
+  color: var(--bg);
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Glass ===== */
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--border);
+}
+
+/* ===== Card base ===== */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+/* ===== Blob decorations ===== */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Scrollbar (menu category slider etc.) ===== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== Skeleton shimmer ===== */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 0px, var(--border-strong) 40px, var(--border) 80px);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== Floating animation for hero art ===== */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+/* ===== Form fields ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+.field input,
+.field select,
+.field textarea {
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 15px;
+  transition: border-color 0.2s var(--ease-out);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--coral);
+}
+.field .error {
+  color: var(--coral-deep);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.field input.invalid,
+.field textarea.invalid {
+  border-color: var(--coral-deep);
+}
